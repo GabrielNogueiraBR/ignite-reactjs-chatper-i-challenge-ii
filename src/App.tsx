@@ -12,6 +12,7 @@ import './styles/global.scss';
 
 import './styles/sidebar.scss';
 import './styles/content.scss';
+import { Content } from './components/Content';
 
 interface GenreResponseProps {
   id: number;
@@ -65,20 +66,10 @@ export function App() {
         handleClickButton={handleClickButton}
         selectedGenreId={selectedGenreId}
       />
-
-      <div className="container">
-        <header>
-          <span className="category">Categoria:<span> {selectedGenre.title}</span></span>
-        </header>
-
-        <main>
-          <div className="movies-list">
-            {movies.map(movie => (
-              <MovieCard key ={movie.imdbID} title={movie.Title} poster={movie.Poster} runtime={movie.Runtime} rating={movie.Ratings[0].Value} />
-            ))}
-          </div>
-        </main>
-      </div>
+      <Content 
+        genre={selectedGenre}
+        movies={movies}
+      />
     </div>
   )
 }
